@@ -1,6 +1,6 @@
-public class MyLinkedList{
-    private MyNode first;
-    private MyNode last;
+public class MyLinkedList <T>{
+    private MyNode <T> first;
+    private MyNode <T> last;
     public int cursor;
 
     public boolean hasNext(){
@@ -25,9 +25,9 @@ public class MyLinkedList{
         }
 
     //добавляет элемент в конец
-    public void add(String value) {
-      MyNode lastTemp = last;
-      MyNode newNode = new MyNode(lastTemp, value, null);
+    public void add(T value) {
+      MyNode <T> lastTemp = last;
+      MyNode <T> newNode = new MyNode(lastTemp, value, null);
       last = newNode;
       if (lastTemp == null){
           first = newNode;
@@ -40,8 +40,8 @@ public class MyLinkedList{
     }
 
     //возвращает элемент под индексом
-    public MyNode get(int index) {
-        MyNode find = first;
+    public MyNode <T> get(int index) {
+        MyNode <T> find = first;
         for (int i=0; i<index; i++){
             find = find.next;
         }
@@ -56,10 +56,20 @@ public class MyLinkedList{
 
         System.out.println("Удаляется " + rem);
 
-        next.prev = prev;
-        prev.next = next;
-        rem.item = null;
-        cursor--;
+        if (next == null){
+            next = last;
+        }
+
+        if (prev==null){
+            first = next;
+            cursor--;
+        } else {
+            next.prev = prev;
+            first = next;
+            rem.item = null;
+            cursor--;
+        }
+
     }
 
     //очищает коллекцию
@@ -79,12 +89,12 @@ public class MyLinkedList{
         return first.item + " " + last.item;
     }
 
-    class MyNode{
-        MyLinkedList.MyNode prev;
-        private String item;
-        MyLinkedList.MyNode next;
+    class MyNode <T>{
+        MyNode prev;
+        private T item;
+        MyNode next;
 
-        public MyNode(MyNode prev, String item, MyNode next) {
+        public MyNode(MyNode <T> prev, T item, MyNode <T> next) {
             this.prev = prev;
             this.item = item;
             this.next = next;

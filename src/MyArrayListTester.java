@@ -3,12 +3,17 @@ import java.util.ArrayList;
 public class MyArrayListTester {
     public static void main (String[] args) {
 
-        System.out.println("Создаем первый MyArrayList с заданной емкостью 5 элементов:");
-        MyArrayList list1 = new MyArrayList(5);
+        System.out.println("\nСоздаем Integer MyArrayList с заданной емкостью 5 элементов, вносим пару значений:");
+        MyArrayList <Integer> list1 = new MyArrayList <>(5);
+        list1.add(88);
+        list1.add(44);
         System.out.println(list1.fullCapacity());
+        //System.out.println(list1);
+        //System.out.println("capacity = " + list1.getArray().length);
+        System.out.println("size = " + list1.size());
 
-        System.out.println("Создаем второй MyArrayList с емкостью по умолчанию 10 элементов и вносим значения:");
-        MyArrayList list = new MyArrayList();
+        System.out.println("\nСоздаем String MyArrayList с емкостью по умолчанию 10 элементов и вносим значения:");
+        MyArrayList <String> list = new MyArrayList<>();
         list.add("a");
         list.add("b");
         list.add("c");
@@ -19,13 +24,9 @@ public class MyArrayListTester {
         System.out.println(list.fullCapacity());
         System.out.println(list);
 
-        System.out.println("Определяем размер MyArrayList:");
-        System.out.println("Первая коллекция: capacity = " + list1.getArray().length);
-        System.out.println("size = " + list1.size());
-        System.out.println("Вторая коллекция: capacity = " + list.getArray().length);
         System.out.println("size = " + list.size());
 
-        System.out.println("Добавляем элементы в конец списка, при необходимости увеличиваем ёмкость в 1,5 раза:");
+        System.out.println("\nДобавляем элементы в конец списка, при необходимости увеличиваем ёмкость в 1,5 раза:");
         System.out.println("Начальный список: " + list);
         list.add("H");
         list.add("I");
@@ -38,21 +39,24 @@ public class MyArrayListTester {
         System.out.println("capacity = " + list.getArray().length);
         System.out.println("size = " + list.size());
 
-        System.out.println("Определяем элементы MyArrayList по индексам:");
+        System.out.println("\nОпределяем элементы MyArrayList по индексам:");
         System.out.println("Элемент под индексом 1 = " + list.get(1));
         System.out.println("Элемент под индексом 5 = " + list.get(5));
         System.out.println("Элемент под индексом 8 = " + list.get(8));
 
-        System.out.println("Удаляем элементы MyArrayList по индексам:");
+        System.out.println("\nУдаляем элементы MyArrayList по индексам:");
         System.out.println("Начальный список: " + list);
-        System.out.println("После удаления элемента под индексом 5(значение " + list.get(5) + ")");
-        list.remove(5);
+        System.out.println("После удаления элемента под индексом 0(значение " + list.get(0) + ")");
+        list.remove(0);
+        System.out.println("получаем: " + list);
+        System.out.println("После удаления элемента под индексом 0(значение " + list.get(0) + ")");
+        list.remove(0);
         System.out.println("получаем: " + list);
         System.out.println("После удаления элемента под индексом 7(значение " + list.get(7) + ")");
         list.remove(7);
         System.out.println("получаем: " + list);
 
-        System.out.println("Очищаем MyArrayList:");
+        System.out.println("\nОчищаем MyArrayList:");
         list.clear();
         System.out.println(list);
     }

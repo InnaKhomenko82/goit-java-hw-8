@@ -1,7 +1,7 @@
 public class MyHashMapTester {
     public static void main(String[] args) {
         System.out.println("\nСоздаем HashMap:");
-        MyHashMap hashMap = new MyHashMap();
+        MyHashMap <String, String> hashMap = new MyHashMap <> ();
         hashMap.put("Первый", "First");
         hashMap.put("Второй", "Second");
         hashMap.put("Третий", "Fird");
@@ -14,7 +14,7 @@ public class MyHashMapTester {
         System.out.println(hashMap.get("Третий"));
         System.out.println(hashMap.get("Четвертый"));
 
-        System.out.println("\nУдаляем пары MyHashMap по ключу:");
+        System.out.println("\nУдаляем пары MyHashMap по ключу \"Третий\":");
         hashMap.remove("Третий");
 
         System.out.println("\nОчищаем MyHashMap:");

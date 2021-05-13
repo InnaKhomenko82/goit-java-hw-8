@@ -1,4 +1,4 @@
-public class MyStack extends MyQueue {
+public class MyStack <T> extends MyQueue {
 
     public void push(String value){
         add(value);

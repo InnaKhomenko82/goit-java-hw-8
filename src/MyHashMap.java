@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
-public class MyHashMap {
+public class MyHashMap <K, V> {
     private int size;
-    private MyNode[] buckets;
+    private MyNode <K, V> [] buckets;
     private static final int DEFAULT_CAPACITY = 16;
     private static final float LOAD_FACTOR = 0.75f;
 
@@ -10,21 +10,21 @@ public class MyHashMap {
         buckets = new MyNode[DEFAULT_CAPACITY];
     }
 
-    private int keyHash(String key){
+    private int keyHash(K key){
         return (key==null)? 0: key.hashCode()%DEFAULT_CAPACITY+1;
     }
 
     //добавляет пару ключ + значение
-    public void put(String key, String value){
+    public void put(K key, V value){
         int keyHash = keyHash(key);
         System.out.println("ключ = " + key + ", значение = " + value + ", определен hash ключа = " + keyHash);
 
         if (size > buckets.length * LOAD_FACTOR) {
-            MyNode [] newBucket = Arrays.copyOf(buckets, buckets.length * 2);
+            MyNode <K, V> [] newBucket = Arrays.copyOf(buckets, buckets.length * 2);
             buckets = newBucket;
         }
 
-        MyNode newNode = new MyNode(key, value,null);
+        MyNode <K, V> newNode = new MyNode <> (key, value,null);
         if (buckets[keyHash] == null){
             buckets[keyHash] = newNode;
             size++;
@@ -44,7 +44,7 @@ public class MyHashMap {
        // System.out.println(Arrays.toString(buckets));
     }
     //удаляет пару по ключу
-    public void remove (String key){
+    public void remove (K key){
         System.out.println("MyHashMap до удаления:\n" + Arrays.toString(buckets));
         buckets[keyHash(key)] = null;
         System.out.println("MyHashMap после удаления:\n" + Arrays.toString(buckets));
@@ -61,7 +61,7 @@ public class MyHashMap {
         return size;
     }
     //возвращает значение(Object value) по ключу
-    public MyNode get (String key){
+    public MyNode <K, V> get (K key){
         int keyHash = keyHash(key);
         MyNode node = buckets[keyHash];
         while (node != null) {
@@ -73,13 +73,13 @@ public class MyHashMap {
         return null;
     }
 
-    class MyNode {
+    class MyNode <K, V> {
     int hash;
-    String key;
-    String value;
-    MyNode next;
+    K key;
+    V value;
+    MyNode <K, V> next;
 
-    MyNode(String key, String value, MyNode next){
+    MyNode(K key, V value, MyNode <K, V> next){
         this.key = key;
         this.value = value;
         this.next = next;
