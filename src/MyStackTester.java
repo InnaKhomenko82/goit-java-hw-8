@@ -21,8 +21,20 @@ public class MyStackTester {
         stack.iterator();
         System.out.println("Размер очереди:" + stack.size());
 
-        System.out.println("\nУдаляем элемент по индексу 4:");
-        stack.remove(4);
+        System.out.println("\nВозвращаем первый элемент в стеке (LIFO):");
+        System.out.println(stack.peek());
+
+        System.out.println("\nВозвращаем первый элемент и удаляем из стека:");
+        stack.pop();
+        System.out.println("Очередь после удаления:");
+        stack.iterator();
+        System.out.println("Размер очереди:" + stack.size());
+
+        System.out.println("\nВозвращаем первый элемент в стеке (LIFO):");
+        System.out.println(stack.peek());
+
+        System.out.println("\nУдаляем элемент по индексу 3:");
+        stack.remove(3);
         System.out.println("Очередь после удаления:");
         stack.iterator();
 

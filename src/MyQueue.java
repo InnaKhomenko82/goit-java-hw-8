@@ -62,6 +62,7 @@ public class MyQueue <T> {
         if (next == null){
             next = prev;
             prev.next = null;
+            rear = prev;
             size--;
         }  else {
             next.prev = prev;
@@ -88,10 +89,10 @@ public class MyQueue <T> {
     }
 
     //возвращает первый элемент в очереди и удаляет его из коллекции
-    public MyNode <T> poll(){
+    public T poll(){
         MyNode <T> poll = front;
         remove(0);
-        return poll;
+        return (T) poll;
     }
 
     @Override

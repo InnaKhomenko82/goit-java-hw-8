@@ -18,6 +18,8 @@ public class MyQueueTester {
         System.out.println("Очередь после удаления:");
         queue.iterator();
         System.out.println("Размер очереди:" + queue.size());
+        System.out.println("\nВозвращаем первый элемент в очереди (FIFO):");
+        System.out.println(queue.peek());
 
         System.out.println("\nУдаляем элемент по индексу 3:");
         queue.remove(3);
